@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELECTRONOVA · Hogar inteligente + energía solar en Bogotá</title>
+    <!-- Tailwind + Inter + Font Awesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .bg-energy { background-color: #10B981; } /* verde energía */
+        .text-energy { color: #10B981; }
+        .btn-energy { background-color: #10B981; transition: background-color 0.2s; }
+        .btn-energy:hover { background-color: #0e9f6e; }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+    <!-- NAVBAR FIJA (minimal) -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-sm border-b border-gray-100 z-50 py-4">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#inicio" class="text-2xl font-bold flex items-center gap-2">
+                <i class="fas fa-bolt text-energy"></i>
+                <span>ELECTRONOVA</span>
+            </a>
+            <!-- Menú escritorio -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#inicio" class="hover:text-energy transition">Inicio</a>
+                <a href="#problema" class="hover:text-energy transition">Problema</a>
+                <a href="#solucion" class="hover:text-energy transition">Solución</a>
+                <a href="#beneficios" class="hover:text-energy transition">Beneficios</a>
+                <a href="#funciona" class="hover:text-energy transition">Cómo funciona</a>
+                <a href="#contacto" class="hover:text-energy transition">Contacto</a>
+            </div>
+            <!-- Botón + menú móvil -->
+            <div class="flex items-center gap-4">
+                <a href="#contacto" class="hidden md:inline-block bg-energy text-white px-5 py-2 rounded-full text-sm font-semibold shadow-sm hover:bg-emerald-600 transition">Diagnóstico gratis</a>
+                <button class="md:hidden text-2xl focus:outline-none" id="menuBtn" onclick="document.querySelector('#mobileMenu').classList.toggle('hidden')">☰</button>
+            </div>
+        </div>
+        <!-- Menú móvil -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 py-4 flex flex-col space-y-3 text-sm font-medium">
+            <a href="#inicio" class="hover:text-energy" onclick="toggleMenu()">Inicio</a>
+            <a href="#problema" class="hover:text-energy" onclick="toggleMenu()">Problema</a>
+            <a href="#solucion" class="hover:text-energy" onclick="toggleMenu()">Solución</a>
+            <a href="#beneficios" class="hover:text-energy" onclick="toggleMenu()">Beneficios</a>
+            <a href="#funciona" class="hover:text-energy" onclick="toggleMenu()">Cómo funciona</a>
+            <a href="#contacto" class="hover:text-energy" onclick="toggleMenu()">Contacto</a>
+            <a href="#contacto" class="bg-energy text-white px-4 py-2 rounded-full text-center">Diagnóstico gratis</a>
+        </div>
+    </nav>
+
+    <!-- HERO con overlay oscuro (imagen de ciudad/energía) -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');">
+        <div class="max-w-4xl mx-auto px-6 text-white">
+            <h1 class="text-5xl md:text-6xl font-bold leading-tight">Energía solar.<br>Control automático.<br>Ahorro real en Bogotá.</h1>
+            <p class="text-xl md:text-2xl mt-6 opacity-90">Paneles fotovoltaicos + sensores de presencia + ESP32 que apagan luces y electrodomésticos cuando no hay nadie. Hasta 27% de ahorro + respaldo en apagones.</p>
+            <div class="mt-10">
+                <a href="#contacto" class="inline-block bg-energy text-white px-10 py-5 rounded-full text-lg font-semibold shadow-xl hover:bg-emerald-600 transition">Solicita tu sistema</a>
+            </div>
+            <p class="mt-8 text-sm uppercase tracking-widest opacity-80">Reducción comprobada de hasta 27 % en consumo eléctrico</p>
+        </div>
+    </section>
+
+    <!-- PROBLEMA (fondo gris suave) -->
+    <section id="problema" class="bg-gray-50 py-24 md:py-32">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">El problema: consumo ineficiente en Bogotá</h2>
+            <p class="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                En los hogares bogotanos, luces y electrodomésticos quedan encendidos sin necesidad. 
+                Esto, unido al alza de tarifas, genera facturas elevadas y desperdicio energético. 
+                Familias de estratos medios y bajos son las más afectadas, y los sistemas tradicionales 
+                de control manual no ayudan. Además, los apagones y sobrecargas representan un riesgo 
+                (UPME, 2023).
+            </p>
+        </div>
+    </section>
+
+    <!-- SOLUCIÓN HÍBRIDA (blanco con imagen) -->
+    <section id="solucion" class="py-24 md:py-32 bg-white">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">ELECTRONOVA: sistema híbrido inteligente</h2>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Combinamos energía solar fotovoltaica con automatización de bajo costo. 
+                    <strong>Paneles solares, inversor y baterías</strong> garantizan suministro incluso durante apagones. 
+                    <strong>Sensores de presencia + microcontroladores ESP32</strong> detectan ausencia y apagan 
+                    luces y electrodomésticos en milisegundos. Todo monitoreado desde una app 
+                    que muestra consumo diario, semanal y mensual.
+                </p>
+                <p class="mt-6 text-energy font-semibold">✔ Económico · escalable · instalación sin obras</p>
+            </div>
+            <div class="bg-gray-100 rounded-2xl p-2 shadow-xl">
+                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Paneles solares y automatización" class="rounded-xl w-full h-auto object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA (4 pasos con iconos) -->
+    <section id="funciona" class="bg-gray-50 py-24 md:py-32">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-16">Cómo funciona</h2>
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Paso 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="w-16 h-16 bg-energy/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-clipboard-list text-3xl text-energy"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">1. Diagnóstico inicial</h3>
+                    <p class="text-gray-600">Evaluamos consumo e instalación en tu hogar para dimensionar el sistema.</p>
+                </div>
+                <!-- Paso 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="w-16 h-16 bg-energy/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-solar-panel text-3xl text-energy"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">2. Energía solar</h3>
+                    <p class="text-gray-600">Paneles, inversor y baterías. Energía limpia que reduce dependencia de la red.</p>
+                </div>
+                <!-- Paso 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="w-16 h-16 bg-energy/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-microchip text-3xl text-energy"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">3. Automatización</h3>
+                    <p class="text-gray-600">ESP32 + sensores de presencia apagan luces y electrodomésticos sin nadie.</p>
+                </div>
+                <!-- Paso 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <div class="w-16 h-16 bg-energy/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-mobile-alt text-3xl text-energy"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">4. Monitoreo</h3>
+                    <p class="text-gray-600">App con consumo en tiempo real, alertas y ahorro histórico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS (dos columnas: lista + destacado) -->
+    <section id="beneficios" class="py-24 md:py-32 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Beneficios comprobados</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <!-- Lista con iconos check -->
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-check-circle text-energy text-2xl mt-1"></i>
+                        <div><span class="font-bold">Ahorro de hasta 27%</span> en factura (estudios colombianos).</div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-check-circle text-energy text-2xl mt-1"></i>
+                        <div><span class="font-bold">Suministro continuo</span> durante apagones gracias a baterías solares.</div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-check-circle text-energy text-2xl mt-1"></i>
+                        <div>Eliminación de desperdicio por luces/electrodomésticos encendidos sin nadie.</div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-check-circle text-energy text-2xl mt-1"></i>
+                        <div>Reducción de huella ambiental y cumplimiento de <strong>ODS 7 y ODS 13</strong>.</div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-check-circle text-energy text-2xl mt-1"></i>
+                        <div><span class="font-bold">Mayor seguridad:</span> evita sobrecargas y riesgos eléctricos.</div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-check-circle text-energy text-2xl mt-1"></i>
+                        <div>Instalación accesible para estratos medios y bajos, sin obras mayores.</div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fas fa-check-circle text-energy text-2xl mt-1"></i>
+                        <div>Conciencia ambiental: ves en tiempo real cuánto ahorras y CO₂ evitas.</div>
+                    </div>
+                </div>
+                <!-- Tarjeta de respaldo (27%) -->
+                <div class="bg-gray-50 p-8 rounded-2xl border-l-8 border-energy flex flex-col justify-center">
+                    <p class="text-7xl font-bold text-energy mb-4">27%</p>
+                    <p class="text-xl font-medium">de ahorro energético validado por estudios con Arduino y Zigbee en Colombia.</p>
+                    <p class="mt-6 text-gray-600">(arXiv, Muzulab Journal, Sciendo)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECNOLOGÍA PROBADA (referencias) -->
+    <section class="bg-gray-50 py-24 md:py-32">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-6">Tecnología validada</h2>
+            <p class="text-center text-gray-600 mb-16 text-lg">Estudios y antecedentes que respaldan nuestra solución</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-energy">
+                    <i class="fas fa-file-alt text-energy text-2xl mb-3"></i>
+                    <h3 class="font-bold">Low-Cost HEM (arXiv)</h3>
+                    <p class="text-sm">Arduino + Zigbee, hasta 27% ahorro en Colombia.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-energy">
+                    <i class="fas fa-microchip text-energy text-2xl mb-3"></i>
+                    <h3 class="font-bold">IoT-based Monitoring (Muzulab)</h3>
+                    <p class="text-sm">ESP32 + sensores de corriente, precisión >95%.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-energy">
+                    <i class="fas fa-ruler text-energy text-2xl mb-3"></i>
+                    <h3 class="font-bold">Medición con ESP32 (Sciendo)</h3>
+                    <p class="text-sm">Alta precisión frente a medidores convencionales.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-energy">
+                    <i class="fas fa-chart-pie text-energy text-2xl mb-3"></i>
+                    <h3 class="font-bold">Proyectos solares (Gelves & Díaz)</h3>
+                    <p class="text-sm">Metodología AHP para Colombia.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-energy">
+                    <i class="fas fa-leaf text-energy text-2xl mb-3"></i>
+                    <h3 class="font-bold">Latinoamérica sostenible</h3>
+                    <p class="text-sm">Revisión sistemática (Seminario-Córdova).</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-energy">
+                    <i class="fas fa-university text-energy text-2xl mb-3"></i>
+                    <h3 class="font-bold">Solar en universidades</h3>
+                    <p class="text-sm">Hernández-Escobedo, ahorro con fotovoltaica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALINEACIÓN LEGAL Y BOGOTÁ -->
+    <section class="py-24 md:py-32 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">Diseñado para Bogotá y alineado con la ley</h2>
+            <p class="text-xl text-gray-700 leading-relaxed">
+                Nuestro sistema se adapta a la infraestructura eléctrica de Bogotá y las tarifas de Enel. 
+                Cumple con las <strong>Políticas de eficiencia energética del Ministerio de Minas y Energía (2022)</strong> 
+                y el informe de la UPME (2023). Contribuimos directamente a los <strong>ODS 7 y ODS 13</strong>.
+            </p>
+        </div>
+    </section>
+
+    <!-- EQUIPO (nombres oficiales) -->
+    <section class="bg-gray-50 py-24 md:py-32">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">Creado por estudiantes del Colegio Jaime Pardo Leal</h2>
+            <div class="flex flex-wrap justify-center gap-6 text-xl font-medium text-gray-800">
+                <span class="bg-white px-6 py-3 rounded-full shadow-sm">Liceth Valeria Díaz Sáenz</span>
+                <span class="bg-white px-6 py-3 rounded-full shadow-sm">Fabian José Fuertes Romero</span>
+                <span class="bg-white px-6 py-3 rounded-full shadow-sm">Fhara Valentina Pérez Angarita</span>
+                <span class="bg-white px-6 py-3 rounded-full shadow-sm">Ángel Roberto Rocha Bernal</span>
+            </div>
+            <p class="mt-8 text-gray-600">Departamento de Tecnología · 2026 · Orientador: Cristian Hernández</p>
+        </div>
+    </section>
+
+    <!-- GLOSARIO (términos con iconos) -->
+    <section class="py-24 md:py-32 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Glosario para transparencia</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flex items-center gap-4 p-5 bg-gray-50 rounded-xl">
+                    <i class="fas fa-sun text-energy text-2xl"></i>
+                    <div><span class="font-bold">Energía fotovoltaica:</span> electricidad solar mediante paneles.</div>
+                </div>
+                <div class="flex items-center gap-4 p-5 bg-gray-50 rounded-xl">
+                    <i class="fas fa-chart-line text-energy text-2xl"></i>
+                    <div><span class="font-bold">Eficiencia energética:</span> uso óptimo sin desperdicio.</div>
+                </div>
+                <div class="flex items-center gap-4 p-5 bg-gray-50 rounded-xl">
+                    <i class="fas fa-shield-halved text-energy text-2xl"></i>
+                    <div><span class="font-bold">Resiliencia energética:</span> suministro ante fallas.</div>
+                </div>
+                <div class="flex items-center gap-4 p-5 bg-gray-50 rounded-xl">
+                    <i class="fas fa-bolt text-energy text-2xl"></i>
+                    <div><span class="font-bold">Apagones:</span> interrupciones que eliminamos con baterías.</div>
+                </div>
+                <div class="flex items-center gap-4 p-5 bg-gray-50 rounded-xl">
+                    <i class="fas fa-person-walking text-energy text-2xl"></i>
+                    <div><span class="font-bold">Sensores de presencia:</span> detectan movimiento/ausencia.</div>
+                </div>
+                <div class="flex items-center gap-4 p-5 bg-gray-50 rounded-xl">
+                    <i class="fas fa-microchip text-energy text-2xl"></i>
+                    <div><span class="font-bold">ESP32:</span> microcontrolador de bajo costo para automatización.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO / FORMULARIO -->
+    <section id="contacto" class="py-24 md:py-32 bg-gray-50">
+        <div class="max-w-2xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">Solicita tu diagnóstico gratis en Bogotá</h2>
+            <form action="#" method="POST" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Nombre completo</label>
+                    <input type="text" required class="w-full border border-gray-200 rounded-lg px-5 py-4 focus:ring-2 focus:ring-energy focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono / WhatsApp</label>
+                    <input type="tel" required class="w-full border border-gray-200 rounded-lg px-5 py-4 focus:ring-2 focus:ring-energy focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Dirección (barrio y estrato)</label>
+                    <input type="text" placeholder="Ej. Chapinero, estrato 3" class="w-full border border-gray-200 rounded-lg px-5 py-4 focus:ring-2 focus:ring-energy focus:outline
